@@ -1,0 +1,39 @@
+// Fonts
+@font-face {
+    font-family: 'SF Pro';
+    src: url('../fonts/SF-Pro-Display-Regular.otf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'SF Pro';
+    src: url('../fonts/SF-Pro-Display-Medium.otf');
+    font-weight: 500;
+}
+
+$font-sf-pro: 'SF Pro', sans-serif;
+// Fonts end
+
+// Colors
+$color-black: #1A1B25;
+$color-main: #FF8E14;
+$color-gray: #959595;
+$color-bg: #D1D7DE;
+$color-white: #FFFFFF;
+$color-error: #FF1414;
+$color-main-fade: #FFD5A9;
+$color-fade: #F6F6F6;
+// Colors end
+
+@mixin media($value) {
+    @if ($value < 0) {
+        @media screen and (min-width: calc($value * (-1)) + 'px') {
+            @content;
+        }
+
+    } @else {
+        @media screen and (max-width: $value + 'px') {
+            @content;
+        }
+    }
+}

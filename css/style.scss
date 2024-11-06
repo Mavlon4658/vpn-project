@@ -1,0 +1,437 @@
+@import './global';
+@import './normalize';
+
+body {
+    font-family: $font-sf-pro;
+    font-weight: 400;
+    background: $color-bg;
+    color: $color-black;
+}
+
+button {
+    font-family: $font-sf-pro;
+    font-weight: 400;
+    color: $color-black;
+}
+
+.btn {
+    &_orange {
+        background: $color-main;
+        width: 100%;
+        height: 52px;
+        color: white;
+        border-radius: 8px;
+        font-size: 17px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .2s ease all;
+        cursor: pointer;
+        user-select: none;
+        box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1),0px 2px 2px 0px rgba(0, 0, 0, 0.09),0px 4px 2px 0px rgba(0, 0, 0, 0.05),0px 7px 3px 0px rgba(0, 0, 0, 0.01),0px 11px 3px 0px rgba(0, 0, 0, 0);
+
+        &:hover {
+            background: #FFAC32;
+            box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1),0px 2px 2px 0px rgba(0, 0, 0, 0.09),0px 4px 2px 0px rgba(0, 0, 0, 0.05),0px 7px 3px 0px rgba(0, 0, 0, 0.01),0px 11px 3px 0px rgba(0, 0, 0, 0);
+        }
+
+        &:active {
+            background: #E17000;
+            box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1),0px 2px 2px 0px rgba(0, 0, 0, 0.09),0px 4px 2px 0px rgba(0, 0, 0, 0.05),0px 7px 3px 0px rgba(0, 0, 0, 0.01),0px 11px 3px 0px rgba(0, 0, 0, 0);
+        }
+
+        &_border {
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            border: 1px solid $color-main;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 500;
+            color: $color-main;
+        }
+    }
+}
+
+.form_inp {
+    width: 100%;
+    height: 52px;
+    border: 1px solid $color-gray;
+    border-radius: 8px;
+    padding: 0 12px;
+
+    &:focus {
+        border-color: $color-main;
+    }
+}
+
+.form_checkbox {
+    user-select: none;
+    gap: 12px;
+    
+    input {
+        display: none;
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        border: 1px solid $color-gray;
+        cursor: pointer;
+
+        svg {
+            display: none;
+        }
+    }
+
+    input:checked ~ .icon {
+        background: $color-main;
+        border-color: $color-main;
+
+        svg {
+            display: block;
+        }
+    }
+
+    p {
+        font-size: 17px;
+
+        a {
+            display: inline;
+            color: $color-main;
+        }
+    }
+}
+
+.text-error {
+    color: $color-error;
+    font-size: 17px;
+    margin-top: 4px;
+}
+
+.main-modal {
+    max-width: 1076px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100svh;
+
+    @include media(1140) {
+        max-width: calc(100% - 64px);
+        padding: 32px 0;
+    }
+
+    @include media(992) {
+        max-width: calc(100% - 72px);
+    }
+
+    @include media(576) {
+        max-width: calc(100% - 24px);
+        padding: 24px 0;
+    }
+
+    &__content {
+        background: $color-white;
+        border-radius: 24px;
+        padding: 24px;
+        width: 100%;
+        position: relative;
+        box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1),0px 2px 2px 0px rgba(0, 0, 0, 0.09),0px 4px 2px 0px rgba(0, 0, 0, 0.05),0px 7px 3px 0px rgba(0, 0, 0, 0.01),0px 11px 3px 0px rgba(0, 0, 0, 0);
+    }
+    
+
+    &__close {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 12px;
+        right: 12px;
+    }
+
+    &__title {
+        font-weight: 500;
+        color: $color-black;
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 24px;
+    }
+
+    .search_inp {
+        margin-bottom: 24px;
+    }
+}
+
+.payment {
+    &_block {
+        gap: 24px;
+
+        &__item {
+            h3 {
+                font-size: 17px;
+                font-weight: 500;
+                color: $color-black;
+                margin-bottom: 12px;
+            }
+
+            ul {
+                gap: 12px;
+            }
+
+            li {
+                width: calc(25% - 9px);
+
+                @include media(992) {
+                    width: calc(100% / 3 - 8px);
+                }
+
+                @include media(720) {
+                    width: calc(50% - 6px);
+                }
+
+                @include media(576) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    &_card {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: $color-fade;
+        border-radius: 8px;
+        padding: 8px 0 8px 12px;
+        box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1),0px 2px 2px 0px rgba(0, 0, 0, 0.09),0px 4px 2px 0px rgba(0, 0, 0, 0.05),0px 7px 3px 0px rgba(0, 0, 0, 0.01),0px 11px 3px 0px rgba(0, 0, 0, 0);
+
+        img {
+            flex-shrink: 0;
+        }
+
+        &__left {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 17px;
+        }
+    }
+}
+
+.payment-modal {
+    max-width: 416px;
+    
+    @include media(440) {
+        max-width: calc(100% - 24px);
+    }
+
+    .form_radio {
+        margin-bottom: 24px;
+        gap: 24px;
+
+        label {
+            cursor: pointer;
+            user-select: none;
+
+            input {
+                display: none;
+            }
+
+            span {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 52px;
+                background: $color-fade;
+                border-radius: 8px;
+                font-size: 17px;
+                font-weight: 500;
+                box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1),0px 2px 2px 0px rgba(0, 0, 0, 0.09),0px 4px 2px 0px rgba(0, 0, 0, 0.05),0px 7px 3px 0px rgba(0, 0, 0, 0.01),0px 11px 3px 0px rgba(0, 0, 0, 0);
+            }
+
+            input:checked ~ span {
+                @extend .btn_orange;
+            }
+        }
+    }
+
+    .form_checkbox {
+        margin: 24px 0 12px;
+    }
+}
+
+.promocode {
+    margin-bottom: 24px;
+    display: none;
+
+    &.active {
+        display: block;
+    }
+
+    label {
+        color: $color-gray;
+        font-size: 17px;
+        margin-bottom: 4px;
+    }
+
+    &_inp {
+        gap: 24px;
+    }
+    
+    .text-error {
+        display: none;
+    }
+
+    &.error {
+        input {
+            color: $color-error;
+            border-color: $color-error;
+        }
+
+        .text-error {
+            display: block;
+        }
+    }
+}
+
+.price {
+    margin-bottom: 12px;
+
+    p {
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 20px;
+    }
+
+    h3 {
+        font-size: 30px;
+        font-weight: 500;
+    }
+}
+
+.links {
+    gap: 12px;
+    margin-top: 24px;
+
+    a {
+        font-size: 12px;
+        color: $color-gray;
+        line-height: 14px;
+    }
+}
+
+.bank-card {
+    &-modal {
+        max-width: 416px;
+    
+        @include media(440) {
+            max-width: calc(100% - 24px);
+        }
+    
+        .checkbox_wrap {
+            gap: 24px;
+            margin-top: 24px;
+        }
+    
+        .email {
+            font-size: 17px;
+            color: $color-gray;
+            margin-top: 12px;
+            display: none;
+    
+            label {
+                margin-bottom: 4px;
+            }
+
+            &.active {
+                display: block;
+            }
+        }
+
+        .price {
+            margin-top: 24px;
+        }
+    }
+
+    &__data {
+        gap: 12px;
+
+        &_item {
+            gap: 24px;
+
+            label {
+                font-size: 17px;
+                margin-bottom: 4px;
+            }
+
+            .text-error {
+                display: none;
+            }
+
+            &.error {
+                input {
+                    border-color: $color-error;
+                    color: $color-error;
+                }
+
+                .text-error {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+.qr-modal {
+    max-width: 416px;
+    
+    @include media(440) {
+        max-width: calc(100% - 24px);
+    }
+    
+    .main-img {
+        width: 100%;
+        height: 260px;
+        margin-bottom: 24px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .payments {
+        margin-bottom: 24px;
+
+        h4 {
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        ul {
+            font-size: 17px;
+            list-style-type: decimal;
+            padding-left: 18px;
+        }
+    }
+
+    .checkbox_wrap {
+        gap: 31px;
+        margin-bottom: 24px;
+    }
+}
