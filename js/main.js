@@ -1,7 +1,15 @@
+const bodyHidden = () => {
+    document.querySelector('body').style.overflow = 'hidden';
+}
+
+const bodyVisible = () => {
+    document.querySelector('body').style.overflow = 'visible';
+}
+
 let paymentCheckbox = document.querySelector('.payment-modal .form_checkbox input[type="checkbox"]'),
     promoCode = document.querySelector('.payment-modal .promocode'),
-    promoCodeBtn = document.querySelector('.promocode button'),
-    promoCodeInp = document.querySelector('.promocode input');
+    promoCodeBtn = document.querySelector('.payment-modal .promocode button'),
+    promoCodeInp = document.querySelector('.payment-modal .promocode input');
 
 const checkPaymentCheckbox = () => {
     if (paymentCheckbox.checked) {
@@ -20,6 +28,28 @@ if (paymentCheckbox) {
     promoCodeBtn.onclick = () => {
         promoCode.classList.add('error');
     }
+}
+
+let qrCheckbox = document.querySelectorAll('.qr-modal .form_checkbox input')[1],
+    qrEmail = document.querySelector('.qr-modal .email'),
+    qrModal = document.querySelector('.qr-modal'),
+    qrModalClose = document.querySelector('.qr-modal .main-modal__close');
+
+const handleQrCheckbox = () => {
+    if (qrCheckbox.checked) {
+        qrEmail.classList.add('active');
+    } else {
+        qrEmail.classList.remove('active');
+    }
+}
+
+handleQrCheckbox();
+qrCheckbox.oninput = () => {
+    handleQrCheckbox();
+}
+
+qrModalClose.onclick = () => {
+    qrModal.classList.remove('active');
 }
 
 let bankCheckbox = document.querySelectorAll('.bank-card-modal .form_checkbox input')[1],
@@ -43,6 +73,56 @@ if (bankCheckbox) {
     };
 
     bankSubmit.onclick = () => {
-        bankCard.classList.add('error')
+        qrModal.classList.add('active')
+        bankCard.classList.add('error');
     }
+}
+
+const modal1 = document.querySelector('.payment-modal');
+const modal1Open = document.querySelector('.payment-modal__open');
+const modal1Close = document.querySelector('.payment-modal .main-modal__close');
+
+modal1Open.onclick = e => {
+    e.preventDefault();
+    modal1.classList.add('active');
+    bodyHidden();
+}
+
+modal1Close.onclick = e => {
+    e.preventDefault();
+    modal1.classList.remove('active');
+    bodyVisible();
+}
+
+const cardsModal = document.querySelector('.cards-modal');
+const cardsModalOpen = document.querySelector('.cards-modal__open');
+const cardsModalClose = document.querySelector('.cards-modal .main-modal__close');
+const cardsModalItem = document.querySelectorAll('.cards-modal .payment_card');
+
+cardsModalOpen.onclick = e => {
+    e.preventDefault();
+    cardsModal.classList.add('active');
+}
+
+cardsModalClose.onclick = () => {
+    cardsModal.classList.remove('active');
+}
+
+cardsModalItem.forEach(el => {
+    el.onclick = () => {
+        cardsModal.classList.remove('active');
+    }
+})
+
+const bankCardModal = document.querySelector('.bank-card-modal');
+const bankCardOpen = document.querySelector('.bank-card-modal__open');
+const bankCardClose = document.querySelector('.bank-card-modal .main-modal__close');
+
+bankCardOpen.onclick = e => {
+    e.preventDefault();
+    bankCardModal.classList.add('active');
+}
+
+bankCardClose.onclick = () => {
+    bankCardModal.classList.remove('active');
 }

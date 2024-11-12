@@ -77,7 +77,6 @@ input[type=number]::-webkit-outer-spin-button {
 body {
   font-family: "SF Pro", sans-serif;
   font-weight: 400;
-  background: #D1D7DE;
   color: #1A1B25;
 }
 
@@ -124,6 +123,11 @@ button {
   font-size: 17px;
   font-weight: 500;
   color: #FF8E14;
+  transition: 0.2s ease all;
+}
+.btn_orange_border:hover {
+  background: #FF8E14;
+  color: white;
 }
 
 .form_inp {
@@ -142,9 +146,16 @@ button {
      -moz-user-select: none;
           user-select: none;
   gap: 12px;
+  position: relative;
 }
 .form_checkbox input {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  opacity: 0;
 }
 .form_checkbox .icon {
   width: 20px;
@@ -180,38 +191,66 @@ button {
   margin-top: 4px;
 }
 
-.main-modal {
-  max-width: 1076px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100svh;
-}
-@media screen and (max-width: 1140px) {
-  .main-modal {
-    max-width: calc(100% - 64px);
+@media screen and (max-width: 992px) {
+  .cards-modal {
+    overflow-y: scroll;
+    align-items: flex-start;
     padding: 32px 0;
   }
 }
-@media screen and (max-width: 992px) {
-  .main-modal {
-    max-width: calc(100% - 72px);
+@media screen and (max-width: 992px) and (max-width: 576px) {
+  .cards-modal {
+    padding: 16px 0;
   }
 }
-@media screen and (max-width: 576px) {
-  .main-modal {
-    max-width: calc(100% - 24px);
-    padding: 24px 0;
+@media screen and (max-width: 992px) {
+  .cards-modal::-webkit-scrollbar {
+    display: none;
   }
+  .cards-modal.active {
+    display: block !important;
+  }
+  .cards-modal .main-modal__content {
+    margin: 0 auto;
+  }
+}
+
+.main-modal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+.main-modal__bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #D1D7DE;
 }
 .main-modal__content {
   background: #FFFFFF;
   border-radius: 24px;
   padding: 24px;
-  width: 100%;
+  width: 1076px;
   position: relative;
   box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1), 0px 2px 2px 0px rgba(0, 0, 0, 0.09), 0px 4px 2px 0px rgba(0, 0, 0, 0.05), 0px 7px 3px 0px rgba(0, 0, 0, 0.01), 0px 11px 3px 0px rgba(0, 0, 0, 0);
+}
+@media screen and (max-width: 992px) {
+  .main-modal__content {
+    width: calc(100% - 64px);
+  }
+}
+@media screen and (max-width: 576px) {
+  .main-modal__content {
+    width: calc(100% - 24px);
+  }
 }
 .main-modal__close {
   position: absolute;
@@ -223,6 +262,9 @@ button {
   top: 12px;
   right: 12px;
 }
+.main-modal__close:hover {
+  filter: drop-shadow(0 1px 0px #000000);
+}
 .main-modal__title {
   font-weight: 500;
   color: #1A1B25;
@@ -232,6 +274,9 @@ button {
 }
 .main-modal .search_inp {
   margin-bottom: 24px;
+}
+.main-modal.active {
+  display: flex;
 }
 
 .payment_block {
@@ -273,6 +318,10 @@ button {
   border-radius: 8px;
   padding: 8px 0 8px 12px;
   box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1), 0px 2px 2px 0px rgba(0, 0, 0, 0.09), 0px 4px 2px 0px rgba(0, 0, 0, 0.05), 0px 7px 3px 0px rgba(0, 0, 0, 0.01), 0px 11px 3px 0px rgba(0, 0, 0, 0);
+  transition: 0.3s ease all;
+}
+.payment_card:hover {
+  background: rgb(217, 217, 217);
 }
 .payment_card img {
   flex-shrink: 0;
@@ -285,14 +334,6 @@ button {
   font-size: 17px;
 }
 
-.payment-modal {
-  max-width: 416px;
-}
-@media screen and (max-width: 440px) {
-  .payment-modal {
-    max-width: calc(100% - 24px);
-  }
-}
 .payment-modal .form_radio {
   margin-bottom: 24px;
   gap: 24px;
@@ -320,6 +361,14 @@ button {
 }
 .payment-modal .form_checkbox {
   margin: 24px 0 12px;
+}
+.payment-modal .main-modal__content {
+  width: 416px;
+}
+@media screen and (max-width: 440px) {
+  .payment-modal .main-modal__content {
+    width: calc(100% - 24px);
+  }
 }
 
 .promocode {
@@ -369,14 +418,18 @@ button {
   font-size: 12px;
   color: #959595;
   line-height: 14px;
+  transition: 0.2s ease all;
+}
+.links a:hover {
+  color: black;
 }
 
-.bank-card-modal {
-  max-width: 416px;
+.bank-card-modal .main-modal__content {
+  width: 416px;
 }
 @media screen and (max-width: 440px) {
-  .bank-card-modal {
-    max-width: calc(100% - 24px);
+  .bank-card-modal .main-modal__content {
+    width: calc(100% - 24px);
   }
 }
 .bank-card-modal .checkbox_wrap {
@@ -419,12 +472,12 @@ button {
   display: block;
 }
 
-.qr-modal {
-  max-width: 416px;
+.qr-modal .main-modal__content {
+  width: 416px;
 }
 @media screen and (max-width: 440px) {
-  .qr-modal {
-    max-width: calc(100% - 24px);
+  .qr-modal .main-modal__content {
+    width: calc(100% - 24px);
   }
 }
 .qr-modal .main-img {
@@ -454,4 +507,31 @@ button {
 .qr-modal .checkbox_wrap {
   gap: 31px;
   margin-bottom: 24px;
+}
+.qr-modal .email {
+  font-size: 17px;
+  color: #959595;
+  display: none;
+}
+.qr-modal .email label {
+  margin-bottom: 4px;
+}
+.qr-modal .email.active {
+  display: block;
+}
+
+@media only screen and (max-width: 576px) and (max-height: 882px) {
+  .qr-modal {
+    overflow-y: scroll;
+  }
+  .qr-modal::-webkit-scrollbar {
+    display: none;
+  }
+  .qr-modal .main-modal__content {
+    margin: 0 auto;
+  }
+  .qr-modal.active {
+    display: block !important;
+    padding: 12px 0;
+  }
 }/*# sourceMappingURL=style.css.map */
