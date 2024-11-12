@@ -1,17 +1,5 @@
 // Fonts
-@font-face {
-    font-family: 'SF Pro';
-    src: url('../fonts/SF-Pro-Display-Regular.otf');
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: 'SF Pro';
-    src: url('../fonts/SF-Pro-Display-Medium.otf');
-    font-weight: 500;
-}
-
-$font-sf-pro: 'SF Pro', sans-serif;
+$font-sf-pro: 'SF Pro Display', sans-serif;
 // Fonts end
 
 // Colors
