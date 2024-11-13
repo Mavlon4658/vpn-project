@@ -48,10 +48,6 @@ qrCheckbox.oninput = () => {
     handleQrCheckbox();
 }
 
-qrModalClose.onclick = () => {
-    qrModal.classList.remove('active');
-}
-
 let bankCheckbox = document.querySelectorAll('.bank-card-modal .form_checkbox input')[1],
     bankEmail = document.querySelector('.bank-card-modal .email'),
     bankSubmit = document.querySelector('.bank-card-modal .submit-btn'),
@@ -125,4 +121,14 @@ bankCardOpen.onclick = e => {
 
 bankCardClose.onclick = () => {
     bankCardModal.classList.remove('active');
+    modal1.classList.remove('active');
+    bodyVisible();
+}
+
+qrModalClose.onclick = () => {
+    qrModal.classList.remove('active');
+    bankCardModal.classList.remove('active');
+    modal1.classList.remove('active');
+    bodyVisible();
+    
 }
