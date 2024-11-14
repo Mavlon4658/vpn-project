@@ -205,6 +205,21 @@ button {
   }
 }
 
+@media (max-height: 730px) {
+  .cards-modal {
+    overflow-y: scroll;
+  }
+  .cards-modal::-webkit-scrollbar {
+    display: none;
+  }
+  .cards-modal .main-modal__content {
+    margin: 0 auto;
+  }
+  .cards-modal.active {
+    display: block !important;
+    padding: 24px 0;
+  }
+}
 .main-modal {
   display: none;
   align-items: center;
@@ -348,6 +363,10 @@ button {
   font-size: 17px;
   font-weight: 500;
   box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1), 0px 2px 2px 0px rgba(0, 0, 0, 0.09), 0px 4px 2px 0px rgba(0, 0, 0, 0.05), 0px 7px 3px 0px rgba(0, 0, 0, 0.01), 0px 11px 3px 0px rgba(0, 0, 0, 0);
+  transition: 0.3s ease all;
+}
+.payment-modal .form_radio label span:hover {
+  background: rgb(217, 217, 217);
 }
 .payment-modal .form_checkbox {
   margin: 24px 0 12px;

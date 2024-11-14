@@ -93,6 +93,7 @@ modal1Close.onclick = e => {
 const cardsModal = document.querySelector('.cards-modal');
 const cardsModalOpen = document.querySelector('.cards-modal__open');
 const cardsModalClose = document.querySelector('.cards-modal .main-modal__close');
+const cardsModalBg = document.querySelector('.cards-modal .main-modal__bg');
 const cardsModalItem = document.querySelectorAll('.cards-modal .payment_card');
 
 cardsModalOpen.onclick = e => {
@@ -101,6 +102,10 @@ cardsModalOpen.onclick = e => {
 }
 
 cardsModalClose.onclick = () => {
+    cardsModal.classList.remove('active');
+}
+
+cardsModalBg.onclick = () => {
     cardsModal.classList.remove('active');
 }
 
